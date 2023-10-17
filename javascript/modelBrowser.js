@@ -67,11 +67,10 @@ function doThingsAfterPopup(tab) {
   applyTextSearch(tab, 'lora');
   applyTextSearch(tab, 'embedding');
 
-  // addNsfwToggle()
+  // 
   addImageClickListener(tab);
 
 
-  applyNsfwClass(tab);
 }
 
 function addImageClickListener(tab) {
@@ -115,19 +114,6 @@ function addFilterButtons(tab, kind) {
   });
 }
 
-
-function applyNsfwClass(tab) {
-  const imageItems = document.querySelectorAll('.image-item');
-
-  imageItems.forEach(item => {
-    const itemTags = item.getAttribute('data-tags').split(' ');
-    if (itemTags.includes('nsfw')) {
-      item.classList.add('nsfw');
-    } else {
-      item.classList.remove('nsfw');
-    }
-  });
-}
 
 function applyTextSearch(tab, kind) {
   document.getElementById(`${tab}-${kind}-filter-search-input`).addEventListener(`input`, () => {
