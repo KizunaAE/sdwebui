@@ -54,7 +54,6 @@ class _HijackManager(object):
         if self._hijacked_on_app_started:
             return
         
-        self.hijack_one('extensions.sd-webui-controlnet.scripts.global_state.update_cn_models', self._hijack_update_cn_models)
         self._hijack_update_cn_models() # update once
 
         self._hijacked_on_app_started = True
@@ -127,7 +126,7 @@ class _HijackManager(object):
                     script.module.global_state.cn_models_names.update(cn_models_dict)
                     break
                 else:
-                    self.hijack_map['extensions.sd-webui-controlnet.scripts.global_state.update_cn_models']['old']()
+                    pass
 
     def _hijack_process_images(self, *args, **kwargs) -> Processed:
         if len(args) > 0 and isinstance(args[0],
